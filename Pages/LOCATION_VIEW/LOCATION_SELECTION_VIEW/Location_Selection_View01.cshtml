@@ -1,0 +1,83 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.LOCATION_VIEW.LOCATION_SELECTION_VIEW.Location_Selection_View01
+@using EASYPROJECT01.EASY_CALLENDER01.SERVICES.FILES.FILE_MANAGER
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+
+<link href="~/css/site01.css" rel="stylesheet" />
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+    <form method="post">
+        <div class="contact-card">
+            <label>Select Project</label>
+            <select asp-for="Location_View_M01.SelectedProject" asp-items="Model.Location_View_M01.ProjectOptions"
+                    class="form-control" onchange="this.form.submit()">
+                <option value="">-- Select Project --</option>
+            </select>
+        </div>
+        <div class="status-label">
+            @Model.Location_View_M01.StatusMessage01
+        </div>
+        @if (Model.Location_View_M01.ShowInput01)
+        {
+            <div class="contact-card">
+                <label>@Model.Location_View_M01.label01</label>
+                <input asp-for="Location_View_M01.input01" required />
+            </div>
+
+        }
+        <div class="status-label">
+            @Model.Location_View_M01.StatusMessage02
+        </div>
+        <!-- MAP -->
+        @if (Model.Location_View_M01.ShowInput02)
+        {
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        }
+        <div class="cta">
+            <button type="submit" asp-page-handler="ok">
+                ⚡ OK ⚡
+            </button>
+        </div>
+        <div class="cta">
+            <button type="submit" asp-page-handler="back">
+                ⚡ BACK ⚡
+            </button>
+        </div>
+    </form>
+    <footer>
+        © 2026 EASY CALLENDER
+    </footer>
+    <script>
+            function initMap() {
+
+                var latitude = @Model.Location_View_M01.Latitude;
+                var longitude = @Model.Location_View_M01.Longitude;
+
+                var location = {
+                    lat: latitude,
+                    lng: longitude
+                };
+
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: location,
+                    mapTypeId: "roadmap"
+                });
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+            }
+    </script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=@File_Manger01.API06.Trim()&callback=initMap">
+    </script>

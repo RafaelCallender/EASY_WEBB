@@ -1,0 +1,66 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.AI_VIEW.AI_SELECTION_VIEW.Ai_Selection_View01
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+
+
+<link href="~/css/site01.css" rel="stylesheet" />
+
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+    <form method="post">
+        <div class="contact-card">
+            <label>Select Project</label>
+            <select asp-for="Ai_View_M01.SelectedProject" asp-items="Model.Ai_View_M01.ProjectOptions"
+                    class="form-control" onchange="this.form.submit()">
+                <option value="">-- Select Project --</option>
+            </select>
+        </div>
+
+        @if (Model.Ai_View_M01.ShowInput01)
+        {
+            <div class="contact-card">
+                <label>@Model.Ai_View_M01.label01</label>
+                <input asp-for="Ai_View_M01.input01" required />
+            </div>
+
+        }
+        <div class="status-label">
+            @Model.Ai_View_M01.StatusMessage01
+        </div>
+        <div class="cta">
+            <button type="submit" asp-page-handler="ok">
+                ⚡ OK ⚡
+            </button>
+        </div>
+        
+        <div class="cta">
+            <button type="submit" asp-page-handler="back">
+                ⚡ BACK ⚡
+            </button>
+        </div>
+        @if (Model.Ai_View_M01.ShowInput02)
+        {
+            <div class="cta">
+                <button type="submit" asp-page-handler="choosephoto">
+                    ⚡Choose Photo⚡
+                </button>
+            </div>
+        }
+        @if (Model.Ai_View_M01.ShowInput03)
+        {
+            <div class="cta">
+                <button type="submit" asp-page-handler="takephoto">
+                    ⚡Take Photo⚡
+                </button>
+            </div>
+        }
+    </form>
+    <footer>
+        © 2026 EASY CALLENDER
+    </footer>

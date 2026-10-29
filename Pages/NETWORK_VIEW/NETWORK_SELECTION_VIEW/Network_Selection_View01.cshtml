@@ -1,0 +1,51 @@
+﻿
+@page
+@model EASYPROJECT01.EASY_WEBB.Pages.NETWORK_VIEW.NETWORK_SELECTION_VIEW.Network_Selection_View01
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+
+<link href="~/css/site01.css" rel="stylesheet" />
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+ <form method="post">
+        <div class="contact-card">
+            <label>Select Project</label>
+            <select asp-for="Network_View_M01.SelectedProject" asp-items="Model.Network_View_M01.ProjectOptions"
+                    class="form-control" onchange="this.form.submit()">
+                <option value="">-- Select Project --</option>
+            </select>
+        </div>
+        <div class="status-label">
+            @Model.Network_View_M01.StatusMessage01
+        </div>
+        @if (Model.Network_View_M01.ShowInput01)
+        {
+            <div class="contact-card">
+                <label>@Model.Network_View_M01.label01</label>
+                <input asp-for="Network_View_M01.input01" required />
+            </div>
+
+        }
+        <div class="status-label">
+            @Model.Network_View_M01.StatusMessage02
+        </div>
+
+        <div class="cta">
+            <button type="submit" asp-page-handler="ok">
+                ⚡ OK ⚡
+            </button>
+        </div>
+        <div class="cta">
+            <button type="submit" asp-page-handler="back">
+                ⚡ BACK ⚡
+            </button>
+        </div>
+    </form>
+    <footer>
+        © 2026 EASY CALLENDER
+    </footer>

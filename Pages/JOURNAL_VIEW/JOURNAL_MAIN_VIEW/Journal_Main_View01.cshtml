@@ -1,0 +1,44 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.JOURNAL_VIEW.JOURNAL_MAIN_VIEW.Journal_Main_View01
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+
+<link href="~/css/site01.css" rel="stylesheet" />
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+    <div class="cta">
+        <form method="post">
+            <button type="submit" asp-page-handler="Journal_sqlexpress">
+                ⚡Journal sqlexpress⚡
+            </button>
+        </form>
+    </div>
+    <div class="cta">
+        <form method="post">
+            <button type="submit" asp-page-handler="Journal_sqlite">
+                ⚡Journal sqlite⚡
+            </button>
+        </form>
+    </div>
+    <div class="cta">
+        <form method="post">
+            <button type="submit" asp-page-handler="Journal_Mysql">
+                ⚡Journal Mysql⚡
+            </button>
+        </form>
+    </div>
+    <div class="cta">
+        <form method="post">
+            <button type="submit" asp-page-handler="back">
+                ⚡ BACK ⚡
+            </button>
+        </form>
+    </div>
+    <footer>
+        © 2026 EASY CALLENDER
+    </footer>

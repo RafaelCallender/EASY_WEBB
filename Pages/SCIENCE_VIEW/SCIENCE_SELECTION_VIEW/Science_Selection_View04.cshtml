@@ -1,0 +1,59 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.SCIENCE_VIEW.SCIENCE_SELECTION_VIEW.Science_Selection_View04
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+<link href="~/css/site01.css" rel="stylesheet" />
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+    <form method="post">
+        @if (Model.Science_View_M01.ShowInput01)
+        {
+            <div class="contact-card">
+                <label>Select Project</label>
+                <select asp-for="Science_View_M01.SelectedProject" asp-items="Model.Science_View_M01.ProjectOptions"
+                        class="form-control" onchange="this.form.submit()">
+                    <option value="">-- Select Project --</option>
+                </select>
+            </div>
+        }
+        @if (Model.Science_View_M01.ShowInput02)
+        {
+            <div class="contact-card">
+                <label>@Model.Science_View_M01.label01</label>
+                <input asp-for="Science_View_M01.input01" />
+            </div>
+        }
+
+        @if (Model.Science_View_M01.ShowInput03)
+        {
+            <div class="contact-card">
+                <label>Select category</label>
+
+                <select asp-for="Science_View_M01.SelectedProject01" asp-items="Model.Science_View_M01.ProjectOptions01"
+                        class="form-control">
+                    <option value="">Select category</option>
+                </select>
+            </div>
+        }
+        <div class="status-label">
+            @Model.Science_View_M01.StatusMessage01
+        </div>
+        <div class="cta">
+            <button type="submit" asp-page-handler="ok">
+                ⚡ OK ⚡
+            </button>
+        </div>
+        <div class="cta">
+            <button type="submit" asp-page-handler="back">
+                ⚡ BACK ⚡
+            </button>
+        </div>
+    </form>
+    <footer>
+        © 2026 EASY CALLENDER
+    </footer>

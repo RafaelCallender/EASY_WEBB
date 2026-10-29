@@ -1,0 +1,26 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.SCIENCE_VIEW.SCIENCE_MAIN_VIEW.Science_Main_View01
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+
+<link href="~/css/site01.css" rel="stylesheet" />
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+    <form method="post">
+        @for (int i = 0; i < Model.button_text.Length; i++)
+        {
+            <div class="cta">
+                <button type="submit" asp-page-handler="Navigate" name="destination" value="@Model.button_destinations[i]">
+                    @Model.button_text[i]
+                </button>
+            </div>
+        }
+    </form>
+    <footer>
+        © 2026 EASY CALLENDER
+    </footer>

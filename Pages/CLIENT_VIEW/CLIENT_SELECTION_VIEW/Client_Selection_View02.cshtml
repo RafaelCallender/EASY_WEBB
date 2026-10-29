@@ -1,0 +1,197 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.CLIENT_VIEW.CLIENT_SELECTION_VIEW.Client_Selection_View02
+@{
+    Layout = null;
+}
+<!-- LINK TO YOUR CSS -->
+
+<link href="~/css/site01.css" rel="stylesheet" />
+<div class="halftone">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">
+        💥 Easy callender projects 💥
+    </div>
+    <form method="post">
+        <div class="contact-card">
+            <label>Select Project</label>
+
+            <select asp-for="Client_View_M01.SelectedProject" asp-items="Model.Client_View_M01.ProjectOptions"
+                    class="form-control" onchange="this.form.submit()">
+                <option value="">-- Select Project --</option>
+            </select>
+        </div>
+
+        @if (Model.Client_View_M01.ShowInput01)
+        {
+            <div class="contact-card">
+                <label>@Model.Client_View_M01.label01</label>
+                <input asp-for="Client_View_M01.input01" required />
+            </div>
+        }
+  
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage01
+    </div>
+    @if (Model.Client_View_M01.ShowInput02)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label02</label>
+            <input asp-for="Client_View_M01.input02" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage02
+    </div>
+    @if (Model.Client_View_M01.ShowInput03)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label03</label>
+            <input asp-for="Client_View_M01.input03" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage03
+    </div>
+    @if (Model.Client_View_M01.ShowInput04)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label04</label>
+            <input asp-for="Client_View_M01.input04" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage04
+    </div>
+    @if (Model.Client_View_M01.ShowInput05)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label05</label>
+            <input asp-for="Client_View_M01.input05" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage05
+    </div>
+    @if (Model.Client_View_M01.ShowInput06)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label06</label>
+            <input asp-for="Client_View_M01.input06" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage06
+    </div>
+    @if (Model.Client_View_M01.ShowInput07)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label07</label>
+            <input asp-for="Client_View_M01.input07" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage07
+    </div>
+    @if (Model.Client_View_M01.ShowInput08)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label08</label>
+            <input asp-for="Client_View_M01.input08" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage08
+    </div>
+    @if (Model.Client_View_M01.ShowInput09)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label09</label>
+            <input asp-for="Client_View_M01.input09" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage09
+    </div>
+    @if (Model.Client_View_M01.ShowInput10)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label11</label>
+            <input asp-for="Client_View_M01.input11" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage11
+    </div>
+    @if (Model.Client_View_M01.ShowInput12)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label12</label>
+            <input asp-for="Client_View_M01.input12" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage12
+    </div>
+    @if (Model.Client_View_M01.ShowInput13)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label13</label>
+            <input asp-for="Client_View_M01.input13" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage13
+    </div>
+    @if (Model.Client_View_M01.ShowInput14)
+    {
+        <div class="contact-card">
+            <label>@Model.Client_View_M01.label14</label>
+            <input asp-for="Client_View_M01.input14" required />
+        </div>
+    }
+
+    <!-- DYNAMIC LABEL -->
+    <div class="status-label">
+        @Model.Client_View_M01.StatusMessage14
+    </div>
+    <div class="cta">
+
+        <button type="submit" asp-page-handler="ok">
+            ⚡ OK ⚡
+        </button>
+
+    </div>
+    <div class="cta">
+
+        <button type="submit" asp-page-handler="back">
+            ⚡ BACK ⚡
+        </button>
+    </form>
+</div>
+<footer>
+    © 2026 EASY CALLENDER
+</footer>
+    
