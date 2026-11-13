@@ -1,0 +1,778 @@
+﻿
+/* =====================================================
+   EASY CALLENDER - PROFESSIONAL DESIGN SYSTEM
+   Theme: Modern Technology / SaaS
+   ===================================================== */
+
+/* 1. DESIGN VARIABLES */
+
+:root {
+    --bg-main: #0b1120;
+    --bg-secondary: #111b2e;
+    --bg-card: #162238;
+    --bg-card-hover: #1c2b44;
+
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --accent: #06b6d4;
+
+    --text-main: #f8fafc;
+    --text-secondary: #94a3b8;
+
+    --border: rgba(148, 163, 184, 0.16);
+
+    --success: #10b981;
+    --danger: #ef4444;
+
+    --radius: 14px;
+    --radius-large: 22px;
+
+    --shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    --transition: 0.25s ease;
+}
+
+/* 2. GLOBAL */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(99, 102, 241, 0.13),
+            transparent 35%
+        ),
+        var(--bg-main);
+
+    color: var(--text-main);
+
+    font-family:
+        'Inter',
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 3. HEADINGS */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.12;
+}
+
+h2 {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+/* 4. HERO / HEADER */
+
+.halftone {
+    position: relative;
+
+    padding: 100px 24px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(99, 102, 241, 0.25),
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            #111b35,
+            #0b1120
+        );
+
+    border-bottom: 1px solid var(--border);
+}
+
+.halftone h1 {
+    max-width: 900px;
+    margin: 0 auto 20px;
+
+    color: #ffffff;
+
+    text-shadow: none;
+}
+
+.tagline {
+    display: inline-block;
+
+    max-width: 700px;
+
+    padding: 12px 22px;
+
+    color: #c7d2fe;
+
+    background: rgba(99, 102, 241, 0.12);
+
+    border: 1px solid rgba(129, 140, 248, 0.3);
+
+    border-radius: 50px;
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* 5. SERVICES GRID */
+
+.services {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 24px;
+
+    width: min(1100px, 92%);
+    margin: 60px auto;
+}
+
+/* 6. SERVICE CARDS */
+
+.card {
+    position: relative;
+
+    padding: 30px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    background: var(--bg-card-hover);
+
+    border-color: rgba(129, 140, 248, 0.55);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.card p {
+    margin-bottom: 0;
+}
+
+/* 7. PRICE / FEATURE HIGHLIGHT */
+
+.price-burst {
+    display: inline-block;
+
+    margin-top: 40px;
+    padding: 18px 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #9333ea
+        );
+
+    color: #ffffff;
+
+    border-radius: 14px;
+
+    font-size: 1.8rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 30px rgba(99, 102, 241, 0.25);
+
+    transform: none;
+}
+
+/* 8. CTA BUTTONS */
+
+.cta {
+    margin-top: 35px;
+}
+
+.cta button,
+button {
+    padding: 13px 26px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #4f46e5
+        );
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 10px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.cta button:hover,
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.3);
+
+    filter: brightness(1.12);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* 9. CONTACT FORM */
+
+.contact-card {
+    position: relative;
+
+    width: min(600px, 92%);
+
+    margin: 35px auto;
+    padding: 30px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+}
+
+.contact-card:hover {
+    border-color: rgba(129, 140, 248, 0.45);
+}
+
+.contact-card::after {
+    content: none;
+}
+
+.contact-card label {
+    display: block;
+
+    margin: 18px 0 8px;
+
+    color: var(--text-main);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    letter-spacing: 0.02em;
+}
+
+/* FORM INPUTS */
+
+.contact-card input,
+.contact-card select,
+.contact-card textarea,
+.youtube-downloader input,
+.youtube-downloader select {
+    display: block;
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    background: #0d1729;
+
+    color: var(--text-main);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition: var(--transition);
+}
+
+.contact-card input:focus,
+.contact-card select:focus,
+.contact-card textarea:focus,
+.youtube-downloader input:focus,
+.youtube-downloader select:focus {
+    border-color: var(--primary-light);
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.15);
+
+    background: #111e34;
+}
+
+.contact-card select,
+.youtube-downloader select {
+    cursor: pointer;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+    color: #64748b;
+}
+
+/* DATE INPUT */
+
+.contact-card input[type="date"] {
+    width: 100%;
+    padding: 14px;
+}
+
+/* 10. IMAGE BUTTON */
+
+.image-button {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.image-button button {
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    box-shadow: none;
+}
+
+.image-button img {
+    display: block;
+
+    width: 150px;
+    height: 110px;
+
+    margin: 0 auto 12px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border);
+
+    transition: var(--transition);
+}
+
+.image-button button:hover img {
+    transform: scale(1.04);
+}
+
+.image-button span {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* 11. MAP */
+
+.map-container {
+    width: min(1100px, 92%);
+
+    margin: 35px auto;
+}
+
+#map {
+    width: 100%;
+    height: 420px;
+
+    border-radius: var(--radius-large);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+}
+
+/* 12. DOWNLOAD SECTION */
+
+.download-section {
+    width: min(750px, 92%);
+
+    margin: 60px auto;
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #172440,
+            #111b2e
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+}
+
+.download-section h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.download-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.download-button {
+    display: inline-block;
+
+    margin-top: 20px;
+    padding: 15px 30px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #059669,
+            #10b981
+        );
+
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.download-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(16, 185, 129, 0.25);
+}
+
+.download-note {
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* 13. YOUTUBE DOWNLOADER */
+
+.youtube-downloader {
+    width: min(700px, 92%);
+
+    margin: 50px auto;
+    padding: 35px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow);
+}
+
+.youtube-downloader h2 {
+    margin-top: 0;
+}
+
+.youtube-downloader label {
+    display: block;
+
+    margin: 20px 0 8px;
+
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.youtube-downloader button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.youtube-downloader button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+    transform: none;
+}
+
+/* PROGRESS BAR */
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    background: #26344c;
+
+    border-radius: 50px;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    border-radius: 50px;
+
+    transition: width 0.3s ease;
+}
+
+/* DOWNLOAD INFORMATION */
+
+.download-information {
+    margin-top: 25px;
+    padding: 20px;
+
+    background: #0d1729;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+.download-information p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* DOWNLOAD LINK */
+
+#downloadFileLink {
+    display: inline-block;
+
+    margin-top: 25px;
+    padding: 14px 25px;
+
+    background: var(--success);
+
+    color: white;
+
+    text-decoration: none;
+    font-weight: 700;
+
+    border-radius: 10px;
+
+    transition: var(--transition);
+}
+
+#downloadFileLink:hover {
+    filter: brightness(1.15);
+    transform: translateY(-3px);
+}
+
+#errorText {
+    color: var(--danger);
+}
+
+/* 14. FOOTER */
+
+footer {
+    margin-top: 80px;
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #080e1b;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 0.9rem;
+}
+
+/* 15. BUTTON MOTIONS */
+
+.button-motion {
+    cursor: pointer;
+
+    transform-origin: center;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.button-shake:hover {
+    animation: buttonShake 0.4s ease;
+}
+
+@keyframes buttonShake {
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+}
+
+.button-rotate:hover {
+    transform: rotate(5deg);
+}
+
+.button-bounce:hover {
+    animation: buttonBounce 0.5s ease;
+}
+
+@keyframes buttonBounce {
+    50% { transform: translateY(-7px); }
+}
+
+.button-grow:hover {
+    transform: scale(1.06);
+}
+
+.button-shrink:hover {
+    transform: scale(0.95);
+}
+
+.button-pulse:hover {
+    animation: buttonPulse 0.8s infinite;
+}
+
+@keyframes buttonPulse {
+    50% { transform: scale(1.05); }
+}
+
+.button-float:hover {
+    transform: translateY(-5px);
+}
+
+.button-wiggle:hover {
+    animation: buttonWiggle 0.4s ease;
+}
+
+@keyframes buttonWiggle {
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.button-slide-left:hover {
+    transform: translateX(-5px);
+}
+
+.button-slide-right:hover {
+    transform: translateX(5px);
+}
+
+.button-jump:hover {
+    animation: buttonBounce 0.5s ease;
+}
+
+.button-tilt:hover {
+    transform: rotate(-3deg);
+}
+
+.button-glow:hover {
+    box-shadow:
+        0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+.button-press:active {
+    transform: scale(0.96);
+}
+
+/* ACCESSIBILITY */
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* 16. RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+
+    .halftone {
+        padding: 65px 18px;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .contact-card,
+    .youtube-downloader {
+        padding: 22px;
+    }
+
+    .download-section {
+        padding: 30px 20px;
+    }
+
+    #map {
+        height: 320px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

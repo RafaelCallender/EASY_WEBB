@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using EASYPROJECT01.EASY_CALLENDER01.TEMPLATE.WEB_TEMPLATE;
+namespace EASYPROJECT01.EASY_WEBB.Pages.TEST_VIEW.TEST_SELECTION_VIEW
+{
+    public class Test_Selection_View08 : PageModel
+    {
+         public string css01 { get; set; } = Web_Template01.ccs01;
+        public void OnGet()
+        {
+
+
+        }
+        public IActionResult OnPostBack()
+        {
+
+
+            return RedirectToPage("/TEST_VIEW/TEST_MAIN_VIEW/Test_Main_View01");
+        }
+    }
+}

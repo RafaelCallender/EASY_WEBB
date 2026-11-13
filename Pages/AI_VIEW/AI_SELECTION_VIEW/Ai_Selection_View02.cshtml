@@ -1,0 +1,177 @@
+﻿@page
+@model EASYPROJECT01.EASY_WEBB.Pages.AI_VIEW.AI_SELECTION_VIEW.Ai_Selection_View02
+@{
+    Layout = null;
+}
+
+<link href="@Url.Content(Model.css01)" rel="stylesheet" />
+<style>
+    .ai-loading { display: flex; align-items: center; gap: .6rem; }
+    .ai-spinner {
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: ai-spin .8s linear infinite;
+    }
+    .chat-transcript { white-space: pre-wrap; }
+    @@keyframes ai-spin { to { transform: rotate(360deg); } }
+</style>
+
+<div class="halftone" id="ai-page"
+     data-selected-project="@Model.Ai_View_M02.SelectedProject">
+    <h1>EASY CALLENDER</h1>
+    <div class="tagline">💥 Easy callender projects 💥</div>
+    <form method="post" id="selection-form">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Ai_View_M02.ConversationId" />
+        <div class="contact-card">
+            <label asp-for="Ai_View_M02.SelectedProject">Select Project</label>
+            <select asp-for="Ai_View_M02.SelectedProject"
+                    asp-items="Model.Ai_View_M02.ProjectOptions"
+                    class="form-control"
+                    onchange="this.form.submit()">
+                <option value="">-- Select Project --</option>
+            </select>
+        </div>
+
+        @if (Model.Ai_View_M02.ShowInput01 && Model.Ai_View_M02.SelectedProject == "1")
+        {
+            <div class="contact-card">
+                <div id="ai-loading" class="ai-loading" role="status"
+                     hidden="@(!Model.Ai_View_M02.IsLoading)">
+                    <span class="ai-spinner" aria-hidden="true"></span>
+                    <span>Loading the AI model. This may take a little while.</span>
+                </div>
+                <div id="ai-ready" role="status" hidden="@(!Model.Ai_View_M02.AiReady)">
+                    AI is ready. You can start chatting.
+                </div>
+                <div id="chat-transcript" class="chat-transcript" aria-live="polite"></div>
+                <label for="chat-message">Message</label>
+                <textarea id="chat-message" maxlength="4000" rows="3"
+                          placeholder="Ask the AI something..."
+                          disabled="@(!Model.Ai_View_M02.AiReady)"></textarea>
+                <button type="button" id="send-message"
+                        disabled="@(!Model.Ai_View_M02.AiReady)">Send</button>
+                <div id="chat-error" class="status-label" role="alert"></div>
+            </div>
+        }
+        else if (Model.Ai_View_M02.ShowInput01)
+        {
+            <div class="status-label">This AI option is not yet available.</div>
+        }
+
+        <div class="status-label" id="page-status" role="status">
+            @Model.Ai_View_M02.StatusMessage01
+        </div>
+        <div class="cta">
+            <button type="submit" asp-page-handler="back">⚡ BACK ⚡</button>
+        </div>
+    </form>
+    <footer>© 2026 EASY CALLENDER</footer>
+</div>
+
+@if (Model.Ai_View_M02.SelectedProject == "1")
+{
+    <script>
+        (() => {
+            const page = document.getElementById("ai-page");
+            const loading = document.getElementById("ai-loading");
+            const ready = document.getElementById("ai-ready");
+            const input = document.getElementById("chat-message");
+            const send = document.getElementById("send-message");
+            const transcript = document.getElementById("chat-transcript");
+            const error = document.getElementById("chat-error");
+            const pageStatus = document.getElementById("page-status");
+            const antiForgery = document.querySelector(
+                'input[name="__RequestVerificationToken"]');
+            const conversationId = document.getElementById(
+                "Ai_View_M02_ConversationId").value;
+
+            function setState(state, message) {
+                const isReady = state === "Ready";
+                const isLoading = state === "Loading";
+                if (loading) loading.hidden = !isLoading;
+                if (ready) ready.hidden = !isReady;
+                if (input) input.disabled = !isReady;
+                if (send) send.disabled = !isReady;
+                if (message && !isReady) pageStatus.textContent = message;
+            }
+
+            async function pollStatus() {
+                try {
+                    const response = await fetch("?handler=AiStatus");
+                    if (!response.ok) throw new Error("Could not check AI status.");
+                    const result = await response.json();
+                    setState(result.state, result.error);
+                    if (result.state === "Error") {
+                        pageStatus.textContent = result.error || "The AI runner failed to start.";
+                        return;
+                    }
+                    if (result.state !== "Ready") {
+                        window.setTimeout(pollStatus, 1500);
+                    } else {
+                        pageStatus.textContent = "";
+                    }
+                } catch (exception) {
+                    pageStatus.textContent = exception.message;
+                    window.setTimeout(pollStatus, 3000);
+                }
+            }
+
+            function addMessage(role, text) {
+                const message = document.createElement("p");
+                message.textContent = role + ": " + text;
+                transcript.appendChild(message);
+            }
+
+            async function sendMessage() {
+                const prompt = input.value.trim();
+                if (!prompt || send.disabled) return;
+
+                error.textContent = "";
+                addMessage("You", prompt);
+                input.value = "";
+                input.disabled = true;
+                send.disabled = true;
+                send.textContent = "Thinking...";
+
+                try {
+                    const body = new URLSearchParams({
+                        message: prompt,
+                        conversationId: conversationId,
+                        __RequestVerificationToken: antiForgery.value
+                    });
+                    const response = await fetch("?handler=Chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: body
+                    });
+                    const result = await response.json();
+                    if (!response.ok) throw new Error(result.error || "The AI request failed.");
+                    addMessage("AI", result.response);
+                } catch (exception) {
+                    error.textContent = exception.message;
+                } finally {
+                    input.disabled = false;
+                    send.disabled = false;
+                    send.textContent = "Send";
+                    input.focus();
+                }
+            }
+
+            if (send) send.addEventListener("click", sendMessage);
+            if (input) {
+                input.addEventListener("keydown", event => {
+                    if (event.key === "Enter" && !event.shiftKey) {
+                        event.preventDefault();
+                        sendMessage();
+                    }
+                });
+            }
+
+            if (page && page.dataset.selectedProject === "1") pollStatus();
+        })();
+    </script>
+}

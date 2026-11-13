@@ -1,0 +1,10 @@
+prefix=/home/swageteam101/Desktop/OneDrive/PROJECTS/EASYPROJECT01/EASYCONSOLE/AI_RUNNER/native/linux-x64
+exec_prefix=/home/swageteam101/Desktop/OneDrive/PROJECTS/EASYPROJECT01/EASYCONSOLE/AI_RUNNER/native/linux-x64
+libdir=/home/swageteam101/Desktop/OneDrive/PROJECTS/EASYPROJECT01/EASYCONSOLE/AI_RUNNER/native/linux-x64/lib
+includedir=/home/swageteam101/Desktop/OneDrive/PROJECTS/EASYPROJECT01/EASYCONSOLE/AI_RUNNER/native/linux-x64/include
+
+Name: llama
+Description: Port of Facebook's LLaMA model in C/C++
+Version: 0.0.8816
+Libs: -L${libdir} -lggml -lggml-base -lllama
+Cflags: -I${includedir}
