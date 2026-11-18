@@ -1,0 +1,789 @@
+/* =========================================================
+   EASY CALLENDER — DARK TECHNOLOGY DESIGN SYSTEM
+   Premium / futuristic / smooth / responsive
+   Drop-in replacement for the existing site01.css
+   Existing class names and IDs are preserved.
+   ========================================================= */
+
+/* 1. DESIGN TOKENS */
+:root {
+    color-scheme: dark;
+
+    --bg-main: #070b12;
+    --bg-deep: #05080e;
+    --bg-secondary: #0c1421;
+    --bg-panel: rgba(15, 25, 40, 0.82);
+    --bg-card: rgba(17, 29, 46, 0.78);
+    --bg-card-hover: rgba(22, 39, 60, 0.94);
+    --bg-input: #0a1320;
+
+    --primary: #19b8e6;
+    --primary-bright: #38d5ff;
+    --primary-soft: rgba(25, 184, 230, 0.14);
+    --accent: #647cff;
+    --accent-soft: rgba(100, 124, 255, 0.14);
+
+    --text-main: #f1f7fc;
+    --text-secondary: #9aadc0;
+    --text-muted: #6e8298;
+
+    --border: rgba(153, 190, 218, 0.13);
+    --border-strong: rgba(56, 213, 255, 0.34);
+
+    --success: #35d6a0;
+    --danger: #ff647c;
+    --warning: #f5bd62;
+
+    --radius-sm: 10px;
+    --radius: 16px;
+    --radius-large: 24px;
+    --radius-xl: 30px;
+
+    --shadow-card: 0 18px 55px rgba(0, 0, 0, 0.28);
+    --shadow-glow: 0 0 32px rgba(25, 184, 230, 0.12);
+
+    --ease: cubic-bezier(.2, .75, .25, 1);
+    --transition: 260ms var(--ease);
+}
+
+/* 2. RESET AND GLOBAL */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    background: var(--bg-main);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text-main);
+    background:
+        radial-gradient(ellipse at 12% 0%, rgba(17, 119, 166, 0.13), transparent 34rem),
+        radial-gradient(ellipse at 92% 18%, rgba(80, 91, 190, 0.10), transparent 30rem),
+        linear-gradient(180deg, #080e18 0%, var(--bg-main) 48%, #080d15 100%);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+a {
+    color: var(--primary-bright);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: #a4edff;
+}
+
+::selection {
+    color: #031018;
+    background: var(--primary-bright);
+}
+
+/* 3. TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.055em;
+    line-height: 1.04;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.045em;
+}
+
+h3 {
+    font-size: 1.22rem;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+small,
+.caption {
+    color: var(--text-muted);
+}
+
+/* 4. HERO / HEADER */
+.halftone {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(88px, 12vw, 156px) 24px clamp(76px, 10vw, 128px);
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background:
+        radial-gradient(ellipse at 50% 5%, rgba(25, 184, 230, 0.20), transparent 48%),
+        radial-gradient(ellipse at 80% 75%, rgba(100, 124, 255, 0.12), transparent 38%),
+        linear-gradient(145deg, #0d1a2a 0%, #080f1b 55%, #070b12 100%);
+}
+
+.halftone::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    opacity: .25;
+    background-image:
+        linear-gradient(rgba(115, 183, 213, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(115, 183, 213, .08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.halftone::after {
+    position: absolute;
+    z-index: -1;
+    top: -180px;
+    left: 50%;
+    width: min(760px, 90vw);
+    height: 420px;
+    content: "";
+    pointer-events: none;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(25, 184, 230, .10);
+    filter: blur(100px);
+}
+
+.halftone h1 {
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    color: #f7fbff;
+    text-shadow: 0 8px 45px rgba(25, 184, 230, .13);
+}
+
+.tagline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 760px;
+    padding: 11px 20px;
+    color: #c4eefa;
+    background: rgba(12, 33, 49, .66);
+    border: 1px solid rgba(56, 213, 255, .24);
+    border-radius: 999px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 8px 30px rgba(0,0,0,.16);
+    font-size: .94rem;
+    font-weight: 500;
+    letter-spacing: .015em;
+    backdrop-filter: blur(14px);
+}
+
+/* 5. SERVICES GRID */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 22px;
+    width: min(1160px, 92%);
+    margin: clamp(48px, 7vw, 84px) auto;
+}
+
+/* 6. CARDS */
+.card {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(24px, 3vw, 34px);
+    background:
+        linear-gradient(145deg, rgba(23, 40, 60, .88), rgba(12, 21, 34, .94));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+    transition:
+        transform 320ms var(--ease),
+        border-color 320ms var(--ease),
+        background 320ms var(--ease),
+        box-shadow 320ms var(--ease);
+    backdrop-filter: blur(16px);
+}
+
+.card::before {
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    content: "";
+    opacity: .65;
+    background: linear-gradient(90deg, transparent, rgba(56, 213, 255, .45), transparent);
+}
+
+.card::after {
+    position: absolute;
+    top: -90px;
+    right: -90px;
+    width: 190px;
+    height: 190px;
+    content: "";
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 50%;
+    background: rgba(25, 184, 230, .12);
+    filter: blur(55px);
+    transition: opacity 350ms var(--ease);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card h3 {
+    margin: 0 0 12px;
+    color: #f2f8fc;
+}
+
+.card p {
+    margin-bottom: 0;
+    line-height: 1.75;
+}
+
+/* 7. PRICE / FEATURE HIGHLIGHT */
+.price-burst {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 34px;
+    padding: 16px 30px;
+    color: #eafaff;
+    background: linear-gradient(120deg, #087da5, #345bd8);
+    border: 1px solid rgba(115, 225, 255, .35);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 38px rgba(15, 151, 205, .22);
+    font-size: clamp(1.45rem, 3vw, 1.9rem);
+    font-weight: 800;
+    letter-spacing: -.035em;
+}
+
+/* 8. BUTTONS */
+.cta {
+    margin-top: 34px;
+}
+
+.cta button,
+button,
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 46px;
+    padding: 12px 23px;
+    color: #03131c;
+    background: linear-gradient(120deg, #42d8f7, #19a9d5 58%, #4c83ef);
+    border: 1px solid rgba(135, 233, 255, .45);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(25, 184, 230, .16);
+    font: inherit;
+    font-size: .95rem;
+    font-weight: 750;
+    letter-spacing: .005em;
+    cursor: pointer;
+    transition:
+        transform 240ms var(--ease),
+        box-shadow 240ms var(--ease),
+        filter 240ms var(--ease),
+        border-color 240ms var(--ease);
+}
+
+.cta button:hover,
+button:hover,
+.download-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: 0 13px 30px rgba(25, 184, 230, .25);
+}
+
+button:active,
+.cta button:active,
+.download-button:active {
+    transform: translateY(0) scale(.985);
+}
+
+button:disabled {
+    opacity: .48;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 9. CONTACT FORM */
+.contact-card {
+    position: relative;
+    width: min(650px, 92%);
+    margin: 36px auto;
+    padding: clamp(24px, 4vw, 38px);
+    background: linear-gradient(145deg, rgba(18, 32, 49, .94), rgba(10, 18, 30, .96));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    backdrop-filter: blur(18px);
+}
+
+.contact-card:hover {
+    border-color: rgba(56, 213, 255, .25);
+    box-shadow: var(--shadow-card), 0 0 30px rgba(25, 184, 230, .06);
+}
+
+.contact-card::after {
+    content: none;
+}
+
+.contact-card label,
+.youtube-downloader label {
+    display: block;
+    margin: 19px 0 8px;
+    color: #dceaf4;
+    font-size: .9rem;
+    font-weight: 650;
+    letter-spacing: .01em;
+}
+
+/* 10. FORM INPUTS */
+.contact-card input,
+.contact-card select,
+.contact-card textarea,
+.youtube-downloader input,
+.youtube-downloader select {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 15px;
+    color: var(--text-main);
+    background: var(--bg-input);
+    border: 1px solid rgba(153, 190, 218, .17);
+    border-radius: 11px;
+    outline: none;
+    font: inherit;
+    font-size: .94rem;
+    transition:
+        border-color 220ms var(--ease),
+        box-shadow 220ms var(--ease),
+        background 220ms var(--ease);
+}
+
+.contact-card textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.contact-card input:focus,
+.contact-card select:focus,
+.contact-card textarea:focus,
+.youtube-downloader input:focus,
+.youtube-downloader select:focus {
+    background: #0c1a29;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(25, 184, 230, .13), 0 0 22px rgba(25, 184, 230, .07);
+}
+
+.contact-card select,
+.youtube-downloader select {
+    cursor: pointer;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder,
+.youtube-downloader input::placeholder {
+    color: #71869b;
+    opacity: 1;
+}
+
+.contact-card input[type="date"] {
+    width: 100%;
+    padding: 12px 14px;
+    color-scheme: dark;
+}
+
+/* 11. IMAGE BUTTON */
+.image-button {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.image-button button {
+    display: inline-block;
+    padding: 0;
+    color: var(--text-main);
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.image-button button:hover {
+    transform: translateY(-2px);
+    background: transparent;
+    box-shadow: none;
+}
+
+.image-button img {
+    display: block;
+    width: 160px;
+    height: 116px;
+    margin: 0 auto 12px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    transition: transform 280ms var(--ease), border-color 280ms var(--ease), box-shadow 280ms var(--ease);
+}
+
+.image-button button:hover img {
+    transform: scale(1.035);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-glow);
+}
+
+.image-button span {
+    color: var(--text-main);
+    font-weight: 650;
+}
+
+/* 12. MAP */
+.map-container {
+    width: min(1160px, 92%);
+    margin: 36px auto;
+}
+
+#map {
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+}
+
+/* 13. DOWNLOAD SECTION */
+.download-section {
+    width: min(800px, 92%);
+    margin: clamp(48px, 7vw, 80px) auto;
+    padding: clamp(32px, 5vw, 56px) 30px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(25, 184, 230, .13), transparent 65%),
+        linear-gradient(145deg, #14263a, #0c1726 72%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+}
+
+.download-section h1 {
+    margin-bottom: 18px;
+    color: #f5fbff;
+    font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.download-section p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    line-height: 1.85;
+}
+
+.download-button {
+    margin-top: 24px;
+    color: #041710;
+    background: linear-gradient(120deg, #48e0b0, #21b98b);
+    border-color: rgba(107, 255, 203, .35);
+    box-shadow: 0 10px 28px rgba(33, 185, 139, .16);
+}
+
+.download-button:hover {
+    box-shadow: 0 14px 32px rgba(33, 185, 139, .25);
+}
+
+.download-note {
+    margin-top: 18px;
+    color: var(--text-muted);
+    font-size: .82rem;
+}
+
+/* 14. YOUTUBE DOWNLOADER */
+.youtube-downloader {
+    width: min(740px, 92%);
+    margin: 52px auto;
+    padding: clamp(24px, 4vw, 40px);
+    background: linear-gradient(145deg, rgba(18, 32, 49, .96), rgba(10, 18, 30, .98));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(18px);
+}
+
+.youtube-downloader h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.youtube-downloader button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.youtube-downloader button:disabled {
+    opacity: .5;
+    cursor: wait;
+    transform: none;
+}
+
+/* 15. PROGRESS BAR */
+.progress-container {
+    width: 100%;
+    height: 9px;
+    margin-top: 22px;
+    overflow: hidden;
+    background: #1b2b3d;
+    border: 1px solid rgba(153, 190, 218, .08);
+    border-radius: 999px;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #168dbb, #38d5ff, #7188ff);
+    border-radius: inherit;
+    box-shadow: 0 0 18px rgba(56, 213, 255, .35);
+    transition: width 420ms var(--ease);
+}
+
+/* 16. DOWNLOAD INFORMATION */
+.download-information {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(5, 12, 21, .62);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.download-information p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+}
+
+#downloadFileLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 13px 23px;
+    color: #041710;
+    background: linear-gradient(120deg, #48e0b0, #21b98b);
+    border: 1px solid rgba(107, 255, 203, .35);
+    border-radius: 11px;
+    font-weight: 750;
+    transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+
+#downloadFileLink:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+    box-shadow: 0 12px 28px rgba(33, 185, 139, .2);
+}
+
+#errorText {
+    color: var(--danger);
+}
+
+/* 17. FOOTER */
+footer {
+    margin-top: 88px;
+    padding: 38px 20px;
+    color: var(--text-muted);
+    background: #050910;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: .88rem;
+}
+
+/* 18. OPTIONAL BUTTON MOTIONS
+   Keep the existing class names, but make motion restrained. */
+.button-motion {
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 240ms var(--ease), box-shadow 240ms var(--ease);
+}
+
+.button-shake:hover {
+    animation: buttonShake 360ms ease;
+}
+
+@keyframes buttonShake {
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-1px); }
+}
+
+.button-rotate:hover { transform: rotate(2deg); }
+.button-bounce:hover,
+.button-jump:hover { animation: buttonBounce 420ms ease; }
+
+@keyframes buttonBounce {
+    50% { transform: translateY(-4px); }
+}
+
+.button-grow:hover { transform: scale(1.035); }
+.button-shrink:hover { transform: scale(.975); }
+
+.button-pulse:hover {
+    animation: buttonPulse 1.1s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    50% { box-shadow: 0 0 0 5px rgba(56, 213, 255, .10), 0 0 24px rgba(56, 213, 255, .2); }
+}
+
+.button-float:hover { transform: translateY(-3px); }
+
+.button-wiggle:hover {
+    animation: buttonWiggle 360ms ease;
+}
+
+@keyframes buttonWiggle {
+    25% { transform: rotate(-1.5deg); }
+    75% { transform: rotate(1.5deg); }
+}
+
+.button-slide-left:hover { transform: translateX(-3px); }
+.button-slide-right:hover { transform: translateX(3px); }
+.button-tilt:hover { transform: rotate(-1.5deg); }
+.button-glow:hover { box-shadow: 0 0 24px rgba(56, 213, 255, .24); }
+.button-press:active { transform: scale(.975); }
+
+/* 19. ACCESSIBILITY */
+:focus-visible {
+    outline: 2px solid var(--primary-bright);
+    outline-offset: 3px;
+}
+
+@media (hover: none) {
+    .card:hover,
+    button:hover,
+    .cta button:hover,
+    .download-button:hover {
+        transform: none;
+    }
+}
+
+/* 20. RESPONSIVE */
+@media (max-width: 768px) {
+    .halftone {
+        padding: 76px 18px 68px;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: min(560px, 92%);
+        margin: 44px auto;
+    }
+
+    .contact-card,
+    .youtube-downloader {
+        padding: 23px;
+    }
+
+    .download-section {
+        padding: 34px 21px;
+    }
+
+    #map {
+        height: 340px;
+    }
+
+    footer {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+
+    .halftone {
+        padding: 66px 16px 58px;
+    }
+
+    .tagline {
+        padding: 9px 15px;
+        font-size: .86rem;
+    }
+
+    .card {
+        padding: 23px;
+        border-radius: 19px;
+    }
+
+    .contact-card,
+    .youtube-downloader {
+        width: 94%;
+        padding: 20px;
+        border-radius: 19px;
+    }
+
+    .download-section {
+        width: 94%;
+        border-radius: 21px;
+    }
+
+    #map {
+        height: 290px;
+    }
+
+    .download-information p {
+        display: block;
+    }
+}
+
+/* 21. REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
